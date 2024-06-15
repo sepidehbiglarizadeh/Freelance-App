@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TextField from "../../ui/TextField";
 
 function SendOTPForm() {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -6,21 +7,13 @@ function SendOTPForm() {
   return (
     <div>
       <form className="space-y-8">
-        <div>
-          <label className="mb-1" htmlFor="phoneNumber">
-            شماره موبایل
-          </label>
-          <input
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            id="phoneNumber"
-            type="text"
-            className="textField__input"
-          />
-        </div>
-        <button className="btn btn--primary w-full">
-          ارسال کد تائید
-        </button>
+        <TextField
+          name="phoneNumber"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          label="شماره موبایل"
+        />
+        <button className="btn btn--primary w-full">ارسال کد تائید</button>
       </form>
     </div>
   );
