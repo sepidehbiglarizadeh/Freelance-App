@@ -8,7 +8,7 @@
   :root {
     &,
     &.light-mode {
-      --background-app-rgb: 255, 255, 255;
+      --background-app-rgb: 249, 255, 255;
       --color-primary-900: 74, 109, 255;
       --color-primary-800: 92, 124, 255;
       --color-primary-700: 110, 138, 255;
@@ -83,6 +83,10 @@ button:disabled {
   box-shadow: none;
 }
 
+label {
+  display: block;
+}
+
 /* inupt number */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -125,4 +129,3 @@ table td {
   padding: 1rem 1rem;
   color: rgb(var(--color-secondary-600));
 }
-
