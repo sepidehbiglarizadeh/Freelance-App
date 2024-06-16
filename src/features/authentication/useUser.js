@@ -6,6 +6,6 @@ export default function useUser() {
     queryKey: ["get-user"],
     queryFn: getUser,
     retry: false,
-    refetchOnWindowFocus: true, // baes mishe ke zamani ke karbar mire rooye ye tabe dg va dobare bar migarde refetch kone
+    // refetchOnWindowFocus: true, // baes mishe ke zamani ke karbar mire rooye ye tabe dg va dobare bar migarde refetch kone
   });
 }

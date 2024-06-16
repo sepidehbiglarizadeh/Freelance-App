@@ -1,8 +1,11 @@
+import ProjectTable from "../features/project/ProjectTable";
 
 function Projects() {
   return (
-    <div>Projects</div>
-  )
+    <div>
+      <ProjectTable />
+    </div>
+  );
 }
 
-export default Projects
+export default Projects;
