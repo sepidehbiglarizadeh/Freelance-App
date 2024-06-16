@@ -1,14 +1,27 @@
 import { useState } from "react";
 import TextField from "../../ui/TextField";
 import RadioInput from "../../ui/RadioInput";
+import { useMutation } from "@tanstack/react-query";
+import { completeProfile } from "../../services/authService";
+import toast from "react-hot-toast";
 
 function CompleteProfileForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
 
-  const handleSubmit = (e) => {
+  const { mutateAsync, isPending } = useMutation({
+    mutationFn: completeProfile,
+  });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const { user, message } = await mutateAsync({ name, email, role });
+      toast.success(message);
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
   };
 
   return (
@@ -45,9 +58,15 @@ function CompleteProfileForm() {
               checked={role === "FREELANCER"}
             />
           </div>
-          <button type="submit" className="btn btn--primary w-full">
-            تائید
-          </button>
+          <div>
+            {isPending ? (
+              <Loading />
+            ) : (
+              <button type="submit" className="btn btn--primary w-full">
+                تائید
+              </button>
+            )}
+          </div>
         </form>
       </div>
     </div>
