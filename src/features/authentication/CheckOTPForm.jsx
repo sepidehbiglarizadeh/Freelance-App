@@ -24,13 +24,14 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOTP, otpResponse }) {
     try {
       const { user, message } = await mutateAsync({ phoneNumber, otp });
       toast.success(message);
-      if (user.isActive) {
-        // push to panel based on role
-        // if(user.roel==="owner") navigate("/owner");
-        // if(user.roel==="freelancer") navigate("/freelancer");
-      } else {
-        navigate("/complete-profile");
+      if (!user.isActive) return navigate("/complete-profile");
+      if (user.status !== 2) {
+        navigate("/");
+        toast("پروفایل شما در انتظار تائید است", { icon: "🖐" });
+        return;
       }
+      if (user.role === "OWNER") return navigate("/owner");
+      if (user.role === "FREELANCER") return navigate("/freelancer");
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -64,11 +65,11 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOTP, otpResponse }) {
           numInputs={6}
           renderSeparator={<span>-</span>}
           renderInput={(props) => <input type="number" {...props} />}
-          containerStyle="flex flex-row-reverse gap-x-2 justify-center"
+          containerStyle="flex flex-row-reverse gap-x-2  justify-center"
           inputStyle={{
-            with: "2.5rem",
-            padding: "0.5rem 1rem",
-            border: "1px solid rgb(var(--color-primary-300))",
+            width: "2.5rem",
+            padding: "0.5rem 0.2rem",
+            border: "1px solid rgb(var(--color-primary-400))",
             borderRadius: "0.5rem",
           }}
         />

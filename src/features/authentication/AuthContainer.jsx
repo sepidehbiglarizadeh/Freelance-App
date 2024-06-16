@@ -24,6 +24,7 @@ function AuthContainer() {
       toast.success(data.message);
       setStep(2);
     } catch (error) {
+      setStep(2);
       toast.error(error?.response?.data?.message);
     }
   };
