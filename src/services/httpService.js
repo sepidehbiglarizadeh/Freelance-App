@@ -5,7 +5,7 @@ const BASE_URL = "http://localhost:5000/api";
 // vaghti az methode create estefade mikonim yani ye axiose mokhtase khodemon ro misazim ama ba confighayi ke khodemon behesh pas midim
 const app = axios.create({
   baseURL: BASE_URL,
-  withCredentials: true,
+  withCredentials: true, // har cookie ke http-only bashe, dakhele cookie haye mororgar zakhire shode bashe ro be soorate automatic be samte backend mifereste
 });
 
 app.interceptors.request.use(
