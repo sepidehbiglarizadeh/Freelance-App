@@ -7,10 +7,12 @@ import { TbPencilMinus } from "react-icons/tb";
 import Modal from "../../ui/Modal";
 import { useState } from "react";
 import ConfirmDelete from "../../ui/ConfirmDelete";
+import useRemoveProject from "./useRemoveProject";
 
 function ProjectRow({ project, index }) {
   const [isEditOpen, setIsEditopen] = useState(false);
   const [isDeleteOpen, setIsDeleteopen] = useState(false);
+  const { isDeleting, removeProject } = useRemoveProject();
 
   return (
     <Table.Row>
@@ -62,7 +64,11 @@ function ProjectRow({ project, index }) {
               <ConfirmDelete
                 resourceName={project.title}
                 onClose={() => setIsDeleteopen(false)}
-                onConfirm={() => {}}
+                onConfirm={() =>
+                  removeProject(project._id, {
+                    onSuccess: (data) => setIsDeleteopen(false), // in zamani farakhani mishe ke function removeProject success beshe
+                  })
+                }
                 disabled={false}
               />
             </Modal>
