@@ -23,7 +23,7 @@ app.interceptors.request.use(
     if (err.response.status === 401 && !originalConfig._retry) {
       originalConfig._retry = true; //dar inja in meghdare _retry ro khodemon behesh dadim ta codehaye in ghesmat faghat 1bar ejra shavand dar gheyre in soorat barname varede ye loop mishod va hang mikard
       try {
-        const { data } = await axios.get(`${BASE_URL}/user/refresh-toke`, {
+        const { data } = await axios.get(`http://localhost:5000/api/user/refresh-token`, {
           withCredentials: true,
         });
         if (data) {
