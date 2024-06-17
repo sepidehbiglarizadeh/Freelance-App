@@ -4,17 +4,18 @@ import { useForm } from "react-hook-form";
 import RHFSelect from "../../ui/RHFSelect";
 import { TagsInput } from "react-tag-input-component";
 import DatePickerField from "../../ui/DatePickerField";
+import useCategories from "../../hooks/useCategories";
 
 function CreateProjectForm() {
-  const [tags, setTags] = useState([]);
-  const [date, setDate] = useState(new Date());
-
   // React-Hook-Form : 1- managing state, 2-submit form, 3- validation
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const [tags, setTags] = useState([]);
+  const [date, setDate] = useState(new Date());
+  const { categories } = useCategories();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -65,7 +66,7 @@ function CreateProjectForm() {
         label="دسته بندی"
         name="category"
         register={register}
-        options={[]}
+        options={categories}
         required
       />
       <div>
