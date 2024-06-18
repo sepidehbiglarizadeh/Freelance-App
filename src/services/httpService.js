@@ -20,7 +20,7 @@ app.interceptors.request.use(
     console.log(err.config);
     const originalConfig = err.config;
 
-    if (err.response.status === 401 && !originalConfig._retry) {
+    if (err?.response?.status === 401 && !originalConfig._retry) {
       originalConfig._retry = true; //dar inja in meghdare _retry ro khodemon behesh dadim ta codehaye in ghesmat faghat 1bar ejra shavand dar gheyre in soorat barname varede ye loop mishod va hang mikard
       try {
         const { data } = await axios.get(`http://localhost:5000/api/user/refresh-token`, {
@@ -31,7 +31,7 @@ app.interceptors.request.use(
           return app(originalConfig);
         }
       } catch (error) {
-        return Promise.reject(err);
+        return Promise.reject(error);
       }
     }
     return Promise.reject(err);
