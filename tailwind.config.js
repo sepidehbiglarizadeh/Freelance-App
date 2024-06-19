@@ -14,6 +14,7 @@ function withOpacity(variableName) {
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: ["class", '[class="dark-mode"]'], // ino baraye in gozashtim ta az ghabeliyate darkmode e tailwind estefade konim va az ounjayi ke ma ghbalan class dark-mode ro be elemenet root pas dadim vali tailwind be soorate default classe dark roo mide be elemente root , injoori [class="dark-mode"] in dastan ro avaz kardim
   theme: {
     extend: {
       colors: {
