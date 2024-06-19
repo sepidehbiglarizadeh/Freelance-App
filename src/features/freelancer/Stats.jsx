@@ -3,34 +3,32 @@ import {
   HiCurrencyDollar,
   HiOutlineViewGrid,
 } from "react-icons/hi";
+import {toPersianNumbersWithComma} from "../../utils/toPersianNumbers"
 import Stat from "../../ui/Stat";
 
-function Stats({ projects }) {
-  const numOfProjects = projects.length;
-  const numOfAcceptedProjects = projects.filter((p) => p.status === 2).length;
-  const numOfProposals = projects.reduce(
-    (acc, curr) => curr.proposals.length + acc,
-    0
-  );
+function Stats({ proposals }) {
+  const numOfProposals = proposals.length;
+  const acceptedProposals = proposals.filter((p) => p.status === 2);
+  const balance = acceptedProposals.reduce((acc, curr) => acc + curr.price, 0);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8">
       <Stat
         color="primary"
-        title="پروژه ها"
-        value={numOfProjects}
+        title="درخواست ها"
+        value={numOfProposals}
         icon={<HiOutlineViewGrid className="w-20 h-20" />}
       />
       <Stat
         color="green"
-        title="پروژه های واگذار شده"
-        value={numOfAcceptedProjects}
+        title="درخواست های تائید شده"
+        value={acceptedProposals.length}
         icon={<HiCurrencyDollar className="w-20 h-20" />}
       />
       <Stat
         color="blue"
-        title="درخواست ها"
-        value={numOfProposals}
+        title="کیف پول"
+        value={toPersianNumbersWithComma(balance)}
         icon={<HiCollection className="w-20 h-20" />}
       />
     </div>
