@@ -9,7 +9,7 @@ function ProjectTable() {
 
   if (isLoading) return <Loading />;
 
-  if (!projects.length) return <Empty resourceName="پروژه ای" />;
+  if (!projects.length) return <Empty resourceName="پروژه ای یافت نشد" />;
 
   return (
     <Table>
