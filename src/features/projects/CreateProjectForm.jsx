@@ -83,7 +83,7 @@ function CreateProjectForm({ onClose, projectToEdit = {} }) {
           required: "عنوان ضروری است",
           minLength: {
             value: 10,
-            message: "طول توضیحات باید بیشتر از 10 کارکتر باشد",
+            message: "طول عنوان باید بیشتر از 10 کارکتر باشد",
           },
         }}
         errors={errors}
