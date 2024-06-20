@@ -18,7 +18,7 @@ const statusOptions = [
   },
   {
     label: "بسته",
-    value: "CLOSED",
+    value: "CLOSE",
   },
 ];
 
@@ -34,7 +34,7 @@ function ProjectsHeader() {
         <FilterDropDown
           filterField="category"
           options={[
-            { value: "All", label: "دسته بندی (همه)" },
+            { value: "ALL", label: "دسته بندی (همه)" },
             ...transformedCategories,
           ]}
         />
