@@ -67,7 +67,7 @@ function CreateProposal({ onClose, projectId }) {
           errors={errors}
         />
         <div className="!mt-8">
-          {0 ? (
+          {isCreating ? (
             <Loading />
           ) : (
             <button type="submit" className="btn btn--primary w-full">
