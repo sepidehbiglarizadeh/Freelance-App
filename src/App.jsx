@@ -14,8 +14,8 @@ import FreelancerDashboard from "./pages/FreelancerDashboard";
 import Proposals from "./pages/Proposals";
 import SubmitedProjects from "./pages/SubmitedProjects";
 import FreelancerLayout from "./features/freelancer/FreelancerLayout";
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'; //in mese redux devtools ke dashtim miad ye seri gozareshat mide
-
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"; //in mese redux devtools ke dashtim miad ye seri gozareshat mide
+import ProtectedRoute from "./ui/ProtectedRoute";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -30,13 +30,27 @@ function App() {
         <Routes>
           <Route path="/auth" element={<Auth />} />
           <Route path="/complete-profile" element={<CompleteProfile />} />
-          <Route path="/owner" element={<OwnerLayout />}>
+          <Route
+            path="/owner"
+            element={
+              <ProtectedRoute>
+                <OwnerLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<OwnerDashboard />} />
             <Route path="projects" element={<Projects />} />
             <Route path="projects/:id" element={<Project />} />
           </Route>
-          <Route path="/freelancer" element={<FreelancerLayout />}>
+          <Route
+            path="/freelancer"
+            element={
+              <ProtectedRoute>
+                <FreelancerLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<FreelancerDashboard />} />
             <Route path="proposals" element={<Proposals />} />
@@ -51,3 +65,6 @@ function App() {
 }
 
 export default App;
+
+// authentication : who is he/she
+// authorized : permission, access to route or file
