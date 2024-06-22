@@ -16,6 +16,9 @@ import SubmitedProjects from "./pages/SubmitedProjects";
 import FreelancerLayout from "./features/freelancer/FreelancerLayout";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"; //in mese redux devtools ke dashtim miad ye seri gozareshat mide
 import ProtectedRoute from "./ui/ProtectedRoute";
+import AdminLayout from "./features/admin/AdminLayout";
+import AdminDashboard from "./pages/AdminDashboard";
+import Users from "./pages/Users";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -53,6 +56,20 @@ function App() {
           >
             <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<FreelancerDashboard />} />
+            <Route path="proposals" element={<Proposals />} />
+            <Route path="projects" element={<SubmitedProjects />} />
+          </Route>
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="users" element={<Users />} />
             <Route path="proposals" element={<Proposals />} />
             <Route path="projects" element={<SubmitedProjects />} />
           </Route>

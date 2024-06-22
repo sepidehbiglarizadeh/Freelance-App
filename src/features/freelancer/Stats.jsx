@@ -26,7 +26,7 @@ function Stats({ proposals }) {
         icon={<HiCurrencyDollar className="w-20 h-20" />}
       />
       <Stat
-        color="blue"
+        color="orange"
         title="کیف پول"
         value={toPersianNumbersWithComma(balance)}
         icon={<HiCollection className="w-20 h-20" />}
