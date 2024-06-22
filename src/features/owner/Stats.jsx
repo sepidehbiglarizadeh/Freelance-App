@@ -28,7 +28,7 @@ function Stats({ projects }) {
         icon={<HiCurrencyDollar className="w-20 h-20" />}
       />
       <Stat
-        color="blue"
+        color="orange"
         title="درخواست ها"
         value={numOfProposals}
         icon={<HiCollection className="w-20 h-20" />}

@@ -9,7 +9,9 @@ export function checkOtp(data) {
 }
 
 export function completeProfile(data) {
-  return http.post("/user/complete-profile", data).then(({ data }) => data.data);
+  return http
+    .post("/user/complete-profile", data)
+    .then(({ data }) => data.data);
 }
 
 export function getUser(data) {
@@ -18,4 +20,8 @@ export function getUser(data) {
 
 export function logoutUserApi(data) {
   return http.get("/user/logout").then(({ data }) => data.data);
+}
+
+export function getUserApi(data) {
+  return http.get("/admin/user/list").then(({ data }) => data.data);
 }
