@@ -19,7 +19,7 @@ export function getUser(data) {
 }
 
 export function logoutUserApi(data) {
-  return http.get("/user/logout").then(({ data }) => data.data);
+  return http.post("/user/logout").then(({ data }) => data.data);
 }
 
 export function getUserApi(data) {
