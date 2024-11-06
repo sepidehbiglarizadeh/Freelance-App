@@ -8,19 +8,19 @@ function Stats({ proposals, users, projects }) {
         color="orange"
         title="کاربران"
         value={users}
-        icon={<HiUser className="w-20 h-20" />}
+        icon={<HiUser className="w-14 h-14 md:w-20 md:h-20" />}
       />
       <Stat
         color="primary"
         title="درخواست ها"
         value={proposals}
-        icon={<HiOutlineViewGrid className="w-20 h-20" />}
+        icon={<HiOutlineViewGrid className="w-14 h-14 md:w-20 md:h-20" />}
       />
       <Stat
         color="green"
         title="پروژه ها"
         value={projects}
-        icon={<HiCollection className="w-20 h-20" />}
+        icon={<HiCollection className="w-14 h-14 md:w-20 md:h-20" />}
       />
     </div>
   );

@@ -26,9 +26,9 @@ function ProjectsHeader() {
   const { transformedCategories } = useCategories();
 
   return (
-    <div className="flex items-center justify-between text-secondary-700 mb-8">
-      <h1 className="text-lg font-bold">لیست پروژه ها</h1>
-      <div className="flex items-center gap-x-2">
+    <div className="md:flex items-center justify-between text-secondary-700 mb-8">
+      <h1 className="text-lg font-bold mb-4 md:mb-0">لیست پروژه ها</h1>
+      <div className="flex flex-col md:flex-row items-center gap-y-2 md:gap-y-0 md:gap-x-2">
         <Filter filterField="status" options={statusOptions} />
         <FilterDropDown filterField="sort" options={sortOptions} />
         <FilterDropDown
